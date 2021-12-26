@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: kkksx in wonderland
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: kkksx
 language: en
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: http://kkksx.github.io/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -40,7 +40,12 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+# Add a folder when initing an article
+post_asset_folder: true
+marked:
+  prependRoot: true
+  postAsset: true
+
 relative_link: false
 future: true
 highlight:
@@ -97,12 +102,12 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: flex-block
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/kkksx/kkksx.github.io
+  repo: git@github.com:kkksx/kkksx.github.io
   branch: main
-  message: update hexo static page
+
