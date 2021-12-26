@@ -22,7 +22,7 @@
 
   
 
-  <title>关于博主 | kkksx in wonderland</title>
+  <title>汇编学习笔记 | kkksx in wonderland</title>
 
   
 
@@ -43,7 +43,7 @@
   <div class="root-container">
     
 <!-- header container -->
-<header class="header-container">
+<header class="header-container post">
   
     <div class="post-image" style="background-image: url(https://qiniu.sukoshi.xyz/src/images/68686407_p0.jpg)"></div>
   
@@ -93,41 +93,92 @@
 
   
   
-
-  
-  
     <div class="header-content">
-      <div class="post-text layout-block layout-padding">
-        <h1 class="title-wrap">关于博主</h1>
-        
-          <h2 class="title-sub-wrap">你想知道的，不一定在这儿~</h2>
-        
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">汇编学习笔记</h1>
+          <h2 class="title-sub-wrap">
+            <strong>kkksx</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2021-12-26T08:27:13.000Z" itemprop="datePublished">2021-12-26</time>
+          </h2>
+          <ul class="wrap-list dark">
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/%E6%B1%87%E7%BC%96/">🏷️ 汇编</a></li>
+  
+</ul>
+        </div>
       </div>
     </div>
+  
+
+  
   
   
 </header>
 
-    <!-- 分页(其他自定义页面) -->
+    <!-- 文章 -->
 
-<!-- 自定义页面 -->
-
+<!-- 文章内容 -->
 <div class="body-container">
   <article class="content-container layout-block post-container">
     <div class="article-info">
       
+      
+      
+      
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p>博主是ZJU2021级本科在读</p>
-<p>这个博客也就记录一些平时学到的琐碎知识，面向对象为自己</p>
-<p>期待未来能学习到更多的知识~~</p>
+        <p>本文章目前基本上为王爽《汇编语言》（第三版）的学习笔记。</p>
+<h2 id="2-寄存器"><a href="#2-寄存器" class="headerlink" title="2  寄存器"></a>2  寄存器</h2><h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="附录1-Debug的安装"><a href="#附录1-Debug的安装" class="headerlink" title="附录1  Debug的安装"></a>附录1  Debug的安装</h3><h3 id="1-1-安装Debug"><a href="#1-1-安装Debug" class="headerlink" title="1.1 安装Debug"></a>1.1 安装Debug</h3><p>因为较高版本的windows没有debug了，需要自己安装</p>
+<p>网上下载Dosbox和debug.exe，扔到同一个目录下</p>
+<p>打开Dosbox目录下的DOSBox 0.74-3 Options.bat，将最后改为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[autoexec]</span><br><span class="line"># Lines in this section will be run at startup.</span><br><span class="line"># You can put your MOUNT lines here.</span><br><span class="line">MOUNT C Dosbox所在的目录</span><br><span class="line">C:</span><br><span class="line">debug</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-修改窗口大小"><a href="#1-2-修改窗口大小" class="headerlink" title="1.2 修改窗口大小"></a>1.2 修改窗口大小</h3><p>打开位于C:\Users\用户名\AppData\Local\DOSBox的dosbox-0.74-3.conf配置文件，修改[sdl]的部分（注意，乘号是一个小写的字母x）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">windowresolution=1028x1024</span><br><span class="line">output=opengl</span><br></pre></td></tr></table></figure>
+
 
       </section>
 
       
       
+        <nav class="article-nav">
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="https://kkksx.github.io/2021/12/25/test/cover.jpg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2021/12/25/test/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">test</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
 
-      
-      
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
     </div>
     <div class="widget-info">
       <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
@@ -164,6 +215,8 @@
     </div>
   </div>
 </section>
+
+      
 
       
 <section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
@@ -209,7 +262,6 @@
     </div>
   </article>
 </div>
-
 
     <!-- footer container -->
 <footer id="footer" class="footer">
@@ -260,6 +312,34 @@
 
   
   <!-- aplayer -->
+
+
+  <!-- aplayer 音频 start -->
+  <link rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+  <script type="text/javascript" src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+  <script type="text/javascript">
+    const aplayer = document.querySelectorAll(".aplayer-box");
+    aplayer && initaplayer(aplayer);
+    function initaplayer(els) {
+      let elsArr = Array.from(els);
+      elsArr.forEach(el => {
+        let params = {
+          container: el,
+          audio: { ...el.dataset },
+          theme: "#b7daff",
+          autoplay: false,
+          loop: false,
+          mutex: true,
+        }
+        if (el.dataset.lrc) {
+          params['lrcType'] = 3
+        }
+        new APlayer(params);
+      });
+    }
+  </script>
+  <!-- aplayer 音频 end -->
+  
 
 
 <!-- dplayer -->
