@@ -45,7 +45,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(https://qiniu.sukoshi.xyz/src/images/68686407_p0.jpg)"></div>
+    <div class="post-image" style="background-image: url(/background.jpg)"></div>
   
 
   <!-- navbar -->
@@ -132,31 +132,78 @@
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
         <p>本文章目前基本上为王爽《汇编语言》（第三版）的学习笔记。</p>
-<h2 id="2-寄存器"><a href="#2-寄存器" class="headerlink" title="2  寄存器"></a>2  寄存器</h2><h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="附录1-Debug的安装"><a href="#附录1-Debug的安装" class="headerlink" title="附录1  Debug的安装"></a>附录1  Debug的安装</h3><h3 id="1-1-安装Debug"><a href="#1-1-安装Debug" class="headerlink" title="1.1 安装Debug"></a>1.1 安装Debug</h3><p>因为较高版本的windows没有debug了，需要自己安装</p>
-<p>网上下载Dosbox和debug.exe，扔到同一个目录下</p>
-<p>打开Dosbox目录下的DOSBox 0.74-3 Options.bat，将最后改为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[autoexec]</span><br><span class="line"># Lines in this section will be run at startup.</span><br><span class="line"># You can put your MOUNT lines here.</span><br><span class="line">MOUNT C Dosbox所在的目录</span><br><span class="line">C:</span><br><span class="line">debug</span><br></pre></td></tr></table></figure>
+<h2 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1  基础知识"></a>1  基础知识</h2><p>pass</p>
+<hr>
+<h2 id="2-寄存器"><a href="#2-寄存器" class="headerlink" title="2  寄存器"></a>2  寄存器</h2><p>pass</p>
+<h3 id="Lab-Debug初体验"><a href="#Lab-Debug初体验" class="headerlink" title="Lab   Debug初体验"></a>Lab   Debug初体验</h3><p>Debug的安装见<a href="#ex1">附录1</a>，打开Dosbox后输入debug进入调试模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">R: 寄存器操作</span><br><span class="line">	R  查看所有寄存器的内容</span><br><span class="line">	R ax  修改ax寄存器的值</span><br><span class="line">D: 查看内存，翻译为ASCII码</span><br><span class="line">	D  查看默认段内存内容，连续使用向后跳</span><br><span class="line">	D 1000:0  查看1000:0内存单元向后的128个内存单元</span><br><span class="line">	D 1000:0 10  查看1000:0到1000:10单内存单元</span><br><span class="line">U: 查看指令，翻译为指令</span><br><span class="line">	U 1000:0  翻译1000:0开始内存单元中存储的指令</span><br><span class="line">E: 改写内存，以16进制或者ASCII码形式</span><br><span class="line">	E 1000:0 1E 2 3F  将从1000:0开始的连续内存单元改为1E 02 3F</span><br><span class="line">	E 1000:0 &#x27;a&#x27; &quot;a + b&quot;  将对应字符变成十六进制ASCII填入（空格是20）</span><br><span class="line">	E 1000:0  从1000:0开始向后选择替换（按空格下一个，按Enter结束）</span><br><span class="line">A: 改写内存，以汇编指令形式</span><br><span class="line">	A 1000:0 mov ax,1  将mov ax,1对应的机器码写到内存中</span><br><span class="line">	A 1000:0  从1000:0开始向后选择替换，同E</span><br><span class="line">T: 执行指令</span><br><span class="line">	T  执行一条指令</span><br><span class="line">	</span><br><span class="line">E、D、A、U都可以用段寄存器来代替段地址SA</span><br></pre></td></tr></table></figure>
 
-<h3 id="1-2-修改窗口大小"><a href="#1-2-修改窗口大小" class="headerlink" title="1.2 修改窗口大小"></a>1.2 修改窗口大小</h3><p>打开位于C:\Users\用户名\AppData\Local\DOSBox的dosbox-0.74-3.conf配置文件，修改[sdl]的部分（注意，乘号是一个小写的字母x）：</p>
+<p><strong>实验任务1</strong>：找到PC主机板上ROM中写入的生产日期，并试着改变它</p>
+<p><strong>解题记录1</strong>：根据提示是在内存FFF00H~FFFFFH中的某几个单元中，这段内存共256个单元，从FFF0:0用两次d指令即可，因为是ROM，大概是修改不了的</p>
+<p><strong>实验任务2</strong>：使用Debug写入以下指令并执行，为什么在mov ax,1234之后 2000:0 f 的值会发生改变</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov ax,2000</span><br><span class="line">mov ss,ax</span><br><span class="line">mov sp,10</span><br><span class="line">mov ax,1234</span><br></pre></td></tr></table></figure>
+
+<p><strong>解题记录2</strong>：此处留坑，需要往后继续学</p>
+<h2 id="3-程序"><a href="#3-程序" class="headerlink" title="3 程序"></a>3 程序</h2><h3 id="编写程序并编译运行"><a href="#编写程序并编译运行" class="headerlink" title="编写程序并编译运行"></a>编写程序并编译运行</h3><p>用edit命令编辑.asm源文件</p>
+<p>用masm C:\test1.asm来编译，在后面加个 ; 进行简易编译</p>
+<p>用link C:\test1.obj来连接，在后面加个 ; 进行简易连接</p>
+<p>用debug C:\test1.exe来跟踪</p>
+<p>一个源程序由以下部分构成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">伪指令</span><br><span class="line">	xxx segment ... xxx ends  用来定义一个段</span><br><span class="line">	end  结束标记</span><br><span class="line">	assume  假设某一段寄存器和某一段关联</span><br><span class="line">段</span><br><span class="line">	代码段/数据段</span><br></pre></td></tr></table></figure>
+
+<p>一个程序结尾应当有<strong>程序返回</strong>，从而将CPU的控制权归还：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov ax,4c00H</span><br><span class="line">int 21H</span><br></pre></td></tr></table></figure>
+
+<h3 id="DOS系统-exe文件加载过程"><a href="#DOS系统-exe文件加载过程" class="headerlink" title="DOS系统.exe文件加载过程"></a>DOS系统.exe文件加载过程</h3><p>一个粗略的讲解（忽略重定位）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">找到一个有足够空闲内存空间的内存区，起始地址为SA:0000</span><br><span class="line">在最前面256个字节（100H）中创建程序段前缀PSP，用于DOS和程序间的通信</span><br><span class="line">从SA+10H:0开始装载程序，而CS:IP也应当指向这个位置，而DS指向的是SA</span><br></pre></td></tr></table></figure>
+
+<h3 id="数字后面是否该加H"><a href="#数字后面是否该加H" class="headerlink" title="数字后面是否该加H"></a>数字后面是否该加H</h3><p>debug和编译器对此的要求是不同的</p>
+<p>在编写.asm文件时，不加H默认为10进制，加H表示为16进制，若像4c00不加H，编译时报错Non-digit in number</p>
+<p>而debug中默认所有数字都是16进制，比如用A命令输入mov ax,100a，不用加H，否则报错</p>
+<p>而如果是对.exe文件进行debug操作，则会将源程序中的mov ax,10变为mov ax,A</p>
+<hr>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="附录1-MSAM的安装与使用"><a href="#附录1-MSAM的安装与使用" class="headerlink" title="附录1  MSAM的安装与使用"></a><h3 id="ex1">附录1  MSAM的安装与使用</h3></h3><h4 id="1-1安装MSAM"><a href="#1-1安装MSAM" class="headerlink" title="1.1安装MSAM"></a>1.1安装MSAM</h4><p>因为较高版本的windows没有debug等，需要自己安装配置</p>
+<p>网上下载Dosbox和MSAM，扔到同一个目录下</p>
+<p>打开Dosbox目录下的DOSBox 0.74-3 Options.bat，将最后改为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[autoexec]</span><br><span class="line"># Lines in this section will be run at startup.</span><br><span class="line"># You can put your MOUNT lines here.</span><br><span class="line">MOUNT C MSAM所在的目录</span><br><span class="line">C:</span><br></pre></td></tr></table></figure>
+
+<p>此处将MASM目录虚拟为C盘，例如其中link.exe的路径为C:\link.exe</p>
+<h4 id="1-2-修改窗口大小"><a href="#1-2-修改窗口大小" class="headerlink" title="1.2  修改窗口大小"></a>1.2  修改窗口大小</h4><p>打开位于C:\Users\用户名\AppData\Local\DOSBox的dosbox-0.74-3.conf配置文件，修改[sdl]的部分（注意，乘号是一个小写的字母x）：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">windowresolution=1028x1024</span><br><span class="line">output=opengl</span><br></pre></td></tr></table></figure>
 
-
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
       </section>
 
       
       
         <nav class="article-nav">
           
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="https://kkksx.github.io/2022/2/28/oop课程记录/cover.jpg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2022/02/28/oop%E8%AF%BE%E7%A8%8B%E8%AE%B0%E5%BD%95/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">oop课程记录</h2>
+        </a>
+      
+      <div class="card-text--row">Newer</div>
+    </div>
+  </article>
+</div>
+          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="card-cover" background-image-lazy data-img="https://kkksx.github.io/2021/12/25/test/cover.jpg"></div>
+      <div class="card-cover" background-image-lazy data-img="https://kkksx.github.io/2021/12/23/用hexo建一个博客/cover.png"></div>
     
     <div class="card-text">
       
-        <a href="/2021/12/25/test/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">test</h2>
+        <a href="/2021/12/23/%E7%94%A8hexo%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">用hexo建一个博客</h2>
         </a>
       
       <div class="card-text--row">Older</div>
@@ -184,7 +231,7 @@
       <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
   <div class="widget-body">
     
-      <img src="https://i.postimg.cc/L8qZ4rf9/1-DD0-CE11-E6-F2-A12-FAC2-FB1-BD8-A291-ADC.jpg" class="soft-size--round soft-style--box" alt="kkksx">
+      <img src="/avatar.png" class="soft-size--round soft-style--box" alt="kkksx">
     
     
       <h2>kkksx</h2>
@@ -210,7 +257,7 @@
         <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
 </svg>
-        2
+        3
       </div>
     </div>
   </div>
@@ -255,7 +302,7 @@
   </div>
   <div class="widget-body">
     <div class="tags-cloud">
-      <a href="/tags/hexo/" style="font-size: 10px;" class="tags-cloud-0">hexo</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 10px;" class="tags-cloud-0">汇编</a>
+      <a href="/tags/hexo/" style="font-size: 10px;" class="tags-cloud-0">hexo</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 10px;" class="tags-cloud-0">汇编</a> <a href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%B0%E5%BD%95/" style="font-size: 10px;" class="tags-cloud-0">课程记录</a>
     </div>
   </div>
 </section>
@@ -287,7 +334,7 @@
       
     </div>
      
-    <p>&copy; 2021 <a href="/" target="_blank">kkksx</a></p>
+    <p>&copy; 2022 <a href="/" target="_blank">kkksx</a></p>
 
     
 
