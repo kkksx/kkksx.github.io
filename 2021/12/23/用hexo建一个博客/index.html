@@ -139,7 +139,7 @@
 <p>之后cd进入博客文件夹，输入npm install和npm install hexo-deployer-git下载对应的依赖</p>
 <p>博文存储在./source/_posts里面</p>
 <p>用以下指令可以生成一个静态页面，并将其部署到github上面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  // 大概是每次都要用，用于清空缓存，防止错误</span><br><span class="line">hexo generator (g)  // 生成静态页面，可以看到多了一个public文件夹，里面存储之后会放到github上面去的页面</span><br><span class="line">hexo deploy (d)  // 将静态页面部署到github上面去，该步骤需要网速</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  // 大概是每次都要用，用于清空缓存，防止错误</span><br><span class="line">hexo generator (g)  // 生成静态页面，可以看到多了一个public文件夹，里面存储之后会放到github上面去的页面</span><br><span class="line">hexo deploy (d)  // 将静态页面部署到github上面去，该步骤需要网速</span><br><span class="line">hexo s  // 预览</span><br></pre></td></tr></table></figure>
 
 <p>在hexo deploy操作前，需要修改_config.yml文件最后的部分，来告诉deploy应该部署到哪里去</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/kkksx/kkksx.github.io</span><br><span class="line">  branch: main  // github将默认分支从master改成了main，这里应该是main</span><br><span class="line">  message: update hexo static page  // 可选</span><br></pre></td></tr></table></figure>
@@ -154,6 +154,8 @@
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="https://kkksx.github.io/2021/12/26/汇编学习笔记/cover.png"></div>
     
     <div class="card-text">
       
